@@ -1,0 +1,98 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 1rem 2rem 2rem;
+  background-color: rgb(255, 253, 253);
+  height: 3rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.logo-nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 3rem;
+}
+
+.h1 {
+  font-family: 'Righteous', cursive;
+  font-size: 2rem;
+}
+
+.h1 p :first-child {
+  color: red;
+  font-size: 2rem;
+}
+
+.h1 p :nth-child(2) {
+  color: blue;
+  font-size: 2rem;
+}
+
+.navbar-collapse {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.navbar-menu li {
+  color: #7a7a7a;
+  list-style: none;
+}
+
+.login-country-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.login-country-container button {
+  text-align: center;
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 0.5rem;
+  min-width: 0;
+  outline: none;
+  padding: 0.4rem 0.2rem;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 4.5rem;
+  will-change: transform;
+}
+
+.login-country-container button:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.login-country-container button:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+.login-country-container img {
+  width: auto;
+  height: 3rem;
+}
