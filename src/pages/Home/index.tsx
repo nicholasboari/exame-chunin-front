@@ -1,3 +1,4 @@
+import { CardCar } from "../../components/CardCar";
 import { Navbar } from "../../components/Navbar";
 import styles from "./Home.module.css";
 
@@ -8,7 +9,7 @@ export function Home(props: any) {
       <div className={styles.container}>
         <div className={styles.search}>
           <form className={styles.form}>
-            <input placeholder="Nome do carro" type="text" required />
+            <input placeholder="Nome do veículo" type="text" required />
             <button type="submit">
               {" "}
               <svg
@@ -25,7 +26,21 @@ export function Home(props: any) {
         </div>
         <h2>200 veículos encontrados</h2>
         <div className={styles["car-list-container"]}>
-          <div className="car-list-items">aqui vai o card do carro</div>
+          <div className={styles["car-list-items"]}>
+            <CardCar />
+            <CardCar />
+            <CardCar />
+            <CardCar />
+            <CardCar />
+            <CardCar />
+            <CardCar />
+            <CardCar />
+            <CardCar />
+            <CardCar />
+            <CardCar />
+            <CardCar />
+            <CardCar />
+          </div>
         </div>
       </div>
     </>

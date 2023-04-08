@@ -76,6 +76,18 @@ input:focus {
 
 .car-list-container {
   padding: 1.5rem;
-  margin: 0 auto;
+  margin: 1rem auto;
   width: 90%;
+  background: rgb(247, 247, 247);
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  border-radius: 20px;
+  box-shadow: 2px black;
+}
+
+.car-list-items {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 15px 15px;
+  padding-bottom: 2.5rem;
+  margin: 2.5rem 0 0 2.5rem;
 }
