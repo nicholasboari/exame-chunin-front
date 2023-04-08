@@ -1,8 +1,8 @@
-import { Navbar } from "./components/Navbar";
+import { Home } from "./pages/Home";
 import "./Global.module.css";
 
 function App() {
-  return <Navbar />;
+  return <Home />;
 }
 
 export default App;
