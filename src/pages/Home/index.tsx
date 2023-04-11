@@ -1,4 +1,5 @@
 import { CardCar } from "../../components/CardCar";
+import { Footer } from "../../components/Footer";
 import { Navbar } from "../../components/Navbar";
 import styles from "./Home.module.css";
 
@@ -43,6 +44,7 @@ export function Home(props: any) {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

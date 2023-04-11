@@ -1,0 +1,14 @@
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  color: white;
+  background: black;
+}
+
+.footer-icon {
+  display: flex;
+  text-align: center;
+  gap: 1rem;
+}
