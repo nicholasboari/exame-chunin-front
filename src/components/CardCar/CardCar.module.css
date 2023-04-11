@@ -19,7 +19,13 @@
   height: auto;
 }
 
+.card-description-container h4 {
+  text-align: center;
+  border-bottom: 1px solid rgb(177, 177, 177);
+}
+
 .card-details {
+  display: block;
   margin-top: 1.5rem;
 }
 
@@ -47,4 +53,13 @@
 .card-details-price {
   text-align: center;
   margin-top: 1rem;
+  border-top: 1px solid rgb(177, 177, 177);
+}
+
+.card-details-price strong {
+  justify-content: center;
+  display: flex;
+  margin-top: 0.6rem;
+  font-weight: 700;
+  color: rgb(10, 10, 71);
 }
