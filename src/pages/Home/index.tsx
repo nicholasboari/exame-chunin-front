@@ -37,10 +37,6 @@ export function Home(props: any) {
             <CardCar />
             <CardCar />
             <CardCar />
-            <CardCar />
-            <CardCar />
-            <CardCar />
-            <CardCar />
           </div>
         </div>
       </div>

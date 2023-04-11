@@ -1,6 +1,7 @@
 .container {
   width: 100rem;
   height: 100%;
+  min-height: 78.5vh;
   margin: 3rem auto;
   justify-content: center;
   align-items: center;
