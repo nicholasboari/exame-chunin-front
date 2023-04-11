@@ -6,6 +6,12 @@
   align-items: center;
 }
 
+.container h2 {
+  font-family: 'Righteous', cursive;
+  font-weight: 400;
+  color: black;
+}
+
 .search {
   margin: 0 auto;
   display: flex;
@@ -76,8 +82,7 @@ input:focus {
 
 .car-list-container {
   padding: 1.5rem;
-  margin: 1rem auto;
-  width: 90%;
+  margin-top: 1.5rem;
   background: rgb(247, 247, 247);
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   border-radius: 20px;
@@ -85,9 +90,9 @@ input:focus {
 }
 
 .car-list-items {
+  margin-top: 1rem;
+  justify-items: center;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-gap: 15px 15px;
-  padding-bottom: 2.5rem;
-  margin: 2.5rem 0 0 2.5rem;
+  grid-gap: 3rem;
 }

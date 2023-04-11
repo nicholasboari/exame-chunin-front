@@ -11,13 +11,11 @@ export function Navbar() {
               <span>Car</span>
             </p>
           </h1>
-          <div className={styles["navbar-collapse"]}>
+          {/* <div className={styles["navbar-collapse"]}>
             <ul className={styles["navbar-menu"]}>
-              <li>Home</li>
               <li>About</li>
-              <li>Contact</li>
             </ul>
-          </div>
+          </div> */}
           <div className={styles["login-country-container"]}>
             <button>Login</button>
             <img
