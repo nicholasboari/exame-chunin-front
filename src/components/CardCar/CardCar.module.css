@@ -50,6 +50,11 @@
   margin-left: -1.5px;
 }
 
+.card-brand img {
+  height: 12px;
+  width: auto;
+}
+
 .card-details-price {
   text-align: center;
   margin-top: 1rem;

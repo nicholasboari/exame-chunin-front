@@ -1,4 +1,5 @@
 import { BsCalendar, BsCarFrontFill, BsFillFuelPumpFill } from "react-icons/bs";
+import brandIcon from "../../assets/img/brand-icon.png";
 import styles from "./CardCar.module.css";
 
 export function CardCar() {
@@ -16,7 +17,7 @@ export function CardCar() {
           <div className={styles["card-details"]}>
             <div className={styles["card-fuel"]}>
               <BsFillFuelPumpFill size={14} />
-              <strong>GASOLINE</strong>
+              <strong>Gasolina</strong>
             </div>
             <div className={styles["card-date"]}>
               <BsCalendar size={14} />
@@ -24,7 +25,11 @@ export function CardCar() {
             </div>
             <div className={styles["card-model"]}>
               <BsCarFrontFill size={14} />
-              <strong>SEDAN</strong>
+              <strong>Sedan</strong>
+            </div>
+            <div className={styles["card-brand"]}>
+              <img src={brandIcon} />
+              <strong>Volkswagen</strong>
             </div>
           </div>
           <div className={styles["card-details-price"]}>
