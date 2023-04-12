@@ -12,7 +12,7 @@ export function CardCar() {
         />
       </div>
       <div className={styles["card-description-container"]}>
-        <h4>T-CROSS</h4>
+        <h4>Polo Track</h4>
         <div className={styles["card-details-container"]}>
           <div className={styles["card-details"]}>
             <div className={styles["card-fuel"]}>
@@ -33,7 +33,7 @@ export function CardCar() {
             </div>
           </div>
           <div className={styles["card-details-price"]}>
-            <strong>R$99.999,00</strong>
+            <strong>R$199.999,00</strong>
           </div>
         </div>
       </div>

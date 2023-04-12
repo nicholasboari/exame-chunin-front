@@ -59,12 +59,15 @@
   text-align: center;
   margin-top: 1rem;
   border-top: 1px solid rgb(177, 177, 177);
+  background-color: black;
+  border-radius: 8px;
 }
 
 .card-details-price strong {
+  align-items: center;
   justify-content: center;
   display: flex;
-  margin-top: 0.6rem;
   font-weight: 700;
-  color: rgb(10, 10, 71);
+  padding: 0.3rem;
+  color: white;
 }

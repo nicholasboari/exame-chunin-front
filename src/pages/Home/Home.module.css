@@ -85,7 +85,7 @@ input:focus {
   padding: 1.5rem;
   margin-top: 1.5rem;
   background: rgb(247, 247, 247);
-  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 20px;
   box-shadow: 2px black;
 }
