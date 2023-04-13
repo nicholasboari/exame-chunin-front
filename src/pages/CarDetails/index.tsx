@@ -1,5 +1,7 @@
-import setaIcon from "../../assets/img/seta.png";
+import { BsCalendar, BsCarFrontFill, BsFillFuelPumpFill } from "react-icons/bs";
 import { Navbar } from "../../components/Navbar";
+import brandIcon from "../../assets/img/brand-icon.png";
+import setaIcon from "../../assets/img/seta.png";
 import styles from "./CarDetails.module.css";
 
 export function CarDetails() {
@@ -33,6 +35,24 @@ export function CarDetails() {
               itaque repellat dolores officia voluptas minus consequuntur a id
               tenetur ea nihil!
             </p>
+            <div className={styles["card-details"]}>
+              <div className={styles["card-fuel"]}>
+                <BsFillFuelPumpFill size={14} />
+                <strong>Gasolina</strong>
+              </div>
+              <div className={styles["card-date"]}>
+                <BsCalendar size={14} />
+                <strong>2023</strong>
+              </div>
+              <div className={styles["card-model"]}>
+                <BsCarFrontFill size={14} />
+                <strong>Sedan</strong>
+              </div>
+              <div className={styles["card-brand"]}>
+                <img src={brandIcon} />
+                <strong>Volkswagen</strong>
+              </div>
+            </div>
           </div>
         </div>
       </div>
