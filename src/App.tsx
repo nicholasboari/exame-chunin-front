@@ -1,9 +1,13 @@
-import { Home } from "./pages/Home";
-import { CarDetails } from "./pages/CarDetails";
 import "./Global.module.css";
+import { BrowserRouter } from "react-router-dom";
+import { Router } from "./Router";
 
 function App() {
-  return <CarDetails />;
+  return (
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
+  );
 }
 
 export default App;
