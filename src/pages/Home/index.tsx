@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { CardCar } from "../../components/CardCar";
 import { Footer } from "../../components/Footer";
 import { Navbar } from "../../components/Navbar";
@@ -28,6 +29,12 @@ export function Home(props: any) {
         <h2>200 veículos encontrados</h2>
         <div className={styles["car-list-container"]}>
           <div className={styles["car-list-items"]}>
+            <NavLink
+              to="/vehicle"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <CardCar />
+            </NavLink>
             <CardCar />
             <CardCar />
             <CardCar />

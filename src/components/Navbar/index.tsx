@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
 export function Navbar() {
@@ -6,10 +7,12 @@ export function Navbar() {
       <div className={styles.container}>
         <div className={styles["logo-nav-container"]}>
           <h1 className={styles.h1}>
-            <p>
-              <span>Samurai</span>
-              <span>Car</span>
-            </p>
+            <NavLink to="/" style={{ textDecoration: "none" }}>
+              <p>
+                <span>Samurai</span>
+                <span>Car</span>
+              </p>
+            </NavLink>
           </h1>
           <div className={styles["login-country-container"]}>
             <button>Login</button>

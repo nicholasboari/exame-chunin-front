@@ -1,10 +1,30 @@
 import { BsCalendar, BsCarFrontFill, BsFillFuelPumpFill } from "react-icons/bs";
 import { Navbar } from "../../components/Navbar";
+import { Vehicle } from "../../types/Vehicle";
+import { BASE_URL } from "../../util/requests";
+import { useEffect, useState } from "react";
+import { priceFormatter } from "../../util/priceFormatter";
+import { useParams } from "react-router-dom";
+
 import brandIcon from "../../assets/img/brand-icon.png";
 import setaIcon from "../../assets/img/seta.png";
 import styles from "./CarDetails.module.css";
+import axios from "axios";
+
+type UrlParams = {
+  vehicleId: string;
+};
 
 export function CarDetails() {
+  const { vehicleId } = useParams<UrlParams>();
+
+  const [vehicle, setVehicle] = useState<Vehicle>();
+
+  useEffect(() => {
+    axios.get(`${BASE_URL}/vehicles/${vehicleId}`).then((response) => {
+      setVehicle(response.data);
+    });
+  }, [vehicleId]);
   return (
     <div>
       <Navbar />
@@ -16,41 +36,33 @@ export function CarDetails() {
         <div className={styles["car-details-card"]}>
           <div>
             <div className={styles["car-details-image"]}>
-              <img
-                src="https://www.pngmart.com/files/10/Kia-Car-PNG-File.png"
-                alt=""
-              />
+              <img src={vehicle?.imageUrl} />
               <br />
-              <strong>T-CROSS</strong>
+              <strong>{vehicle?.name}</strong>
             </div>
             <div className={styles["car-details-price"]}>
-              <span>R$199.999,00</span>
+              <span>{priceFormatter(vehicle?.price)}</span>
             </div>
           </div>
           <div className={styles["car-details-description"]}>
             <h2>Descrição</h2>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum
-              similique quaerat recusandae quos, eum nam earum saepe optio
-              itaque repellat dolores officia voluptas minus consequuntur a id
-              tenetur ea nihil!
-            </p>
+            <p>{vehicle?.description}</p>
             <div className={styles["card-details"]}>
               <div className={styles["card-fuel"]}>
                 <BsFillFuelPumpFill size={14} />
-                <strong>Gasolina</strong>
+                <strong>{vehicle?.vehicleFuel}</strong>
               </div>
               <div className={styles["card-date"]}>
                 <BsCalendar size={14} />
-                <strong>2023</strong>
+                <strong>{vehicle?.year}</strong>
               </div>
               <div className={styles["card-model"]}>
                 <BsCarFrontFill size={14} />
-                <strong>Sedan</strong>
+                <strong>{vehicle?.vehicleModel}</strong>
               </div>
               <div className={styles["card-brand"]}>
                 <img src={brandIcon} />
-                <strong>Volkswagen</strong>
+                <strong>{vehicle?.vehicleBrand}</strong>
               </div>
             </div>
           </div>
