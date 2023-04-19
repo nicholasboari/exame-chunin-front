@@ -1,39 +1,42 @@
 import { BsCalendar, BsCarFrontFill, BsFillFuelPumpFill } from "react-icons/bs";
+import { Vehicle } from "../../types/Vehicle";
 import brandIcon from "../../assets/img/brand-icon.png";
 import styles from "./CardCar.module.css";
+import { priceFormatter } from "../../util/priceFormatter";
 
-export function CardCar() {
+type Props = {
+  vehicle: Vehicle;
+};
+
+export function CardCar({ vehicle }: Props) {
   return (
     <div className={styles["card-content"]}>
       <div className={styles["card-image"]}>
-        <img
-          src="https://www.pngmart.com/files/10/Kia-Car-PNG-File.png"
-          alt=""
-        />
+        <img src={vehicle.imageUrl} alt="" />
       </div>
       <div className={styles["card-description-container"]}>
-        <h4>Polo Track</h4>
+        <h4>{vehicle.name}</h4>
         <div className={styles["card-details-container"]}>
           <div className={styles["card-details"]}>
             <div className={styles["card-fuel"]}>
               <BsFillFuelPumpFill size={14} />
-              <strong>Gasolina</strong>
+              <strong>{vehicle.vehicleFuel}</strong>
             </div>
             <div className={styles["card-date"]}>
               <BsCalendar size={14} />
-              <strong>2023</strong>
+              <strong>{vehicle.year}</strong>
             </div>
             <div className={styles["card-model"]}>
               <BsCarFrontFill size={14} />
-              <strong>Sedan</strong>
+              <strong>{vehicle.vehicleModel}</strong>
             </div>
             <div className={styles["card-brand"]}>
               <img src={brandIcon} />
-              <strong>Volkswagen</strong>
+              <strong>{vehicle.vehicleBrand}</strong>
             </div>
           </div>
           <div className={styles["card-details-price"]}>
-            <strong>R$199.999,00</strong>
+            <strong>{priceFormatter(vehicle?.price)}</strong>
           </div>
         </div>
       </div>

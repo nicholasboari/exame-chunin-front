@@ -2,9 +2,24 @@ import { NavLink } from "react-router-dom";
 import { CardCar } from "../../components/CardCar";
 import { Footer } from "../../components/Footer";
 import { Navbar } from "../../components/Navbar";
+import { useEffect, useState } from "react";
+import { Vehicle } from "../../types/Vehicle";
+import { Page } from "../../types/Page";
+import { BASE_URL } from "../../util/requests";
+
 import styles from "./Home.module.css";
+import axios from "axios";
 
 export function Home(props: any) {
+  const [page, setPage] = useState<Page<Vehicle>>();
+
+  useEffect(() => {
+    axios.get(`${BASE_URL}/vehicles`).then((response) => {
+      setPage(response.data);
+      console.log(response.data);
+    });
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -26,22 +41,20 @@ export function Home(props: any) {
             </button>
           </form>
         </div>
-        <h2>200 veículos encontrados</h2>
+        <h2>{page?.totalElements} veículos encontrados</h2>
         <div className={styles["car-list-container"]}>
           <div className={styles["car-list-items"]}>
-            <NavLink
-              to="/vehicle"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <CardCar />
-            </NavLink>
-            <CardCar />
-            <CardCar />
-            <CardCar />
-            <CardCar />
-            <CardCar />
-            <CardCar />
-            <CardCar />
+            {page?.content.map((vehicle) => {
+              return (
+                <NavLink
+                  to=""
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  key={vehicle.id}
+                >
+                  <CardCar vehicle={vehicle} />
+                </NavLink>
+              );
+            })}
           </div>
         </div>
       </div>
