@@ -1,0 +1,11 @@
+.auth-container {
+  display: flex;
+  justify-content: center;
+  padding: 4rem;
+}
+
+.form-container {
+  display: flex;
+  width: 560px;
+  justify-content: center;
+}
