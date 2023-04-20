@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import { requestLogin } from "../../../util/requests";
+import { useState } from "react";
+
 import styles from "./Login.module.css";
 
 type FormData = {
@@ -8,14 +10,18 @@ type FormData = {
 };
 
 export function Login() {
+  const [hasError, setHasError] = useState(false);
+
   const { register, handleSubmit } = useForm<FormData>();
 
   const onsubmit = (formData: FormData) => {
     requestLogin(formData)
       .then((response) => {
+        setHasError(false);
         console.log("sucesso", response);
       })
       .catch((error) => {
+        setHasError(true);
         console.log("erro", error);
       });
   };
@@ -23,6 +29,11 @@ export function Login() {
   return (
     <div className={styles["login-card"]}>
       <h1>LOGIN</h1>
+      {hasError && (
+        <div className={styles["login-notification"]}>
+          Erro de autenticação!
+        </div>
+      )}
       <form
         onSubmit={handleSubmit(onsubmit)}
         className={styles["form-container"]}
