@@ -1,2 +1,26 @@
+import axios from "axios";
+
 export const BASE_URL = "http://localhost:8080";
-export const BASE_URL_IMAGES = "C:/Users/Nicholas/Desktop/imagensExameChunin/";
+
+type LoginData = {
+  login: string;
+  password: string;
+};
+
+export const requestLogin = (loginData: LoginData) => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+
+  const data = {
+    ...loginData,
+  };
+
+  return axios({
+    method: "post",
+    baseURL: BASE_URL,
+    url: "/login",
+    data,
+    headers,
+  });
+};
