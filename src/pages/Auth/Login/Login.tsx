@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { requestLogin } from "../../../util/requests";
+import { authToken, requestLogin } from "../../../util/requests";
 import { useState } from "react";
 
 import styles from "./Login.module.css";
@@ -17,6 +17,7 @@ export function Login() {
   const onsubmit = (formData: FormData) => {
     requestLogin(formData)
       .then((response) => {
+        console.log(authToken(response.data));
         setHasError(false);
         console.log("sucesso", response);
       })

@@ -24,3 +24,8 @@ export const requestLogin = (loginData: LoginData) => {
     headers,
   });
 };
+
+export const authToken = (token: string) => {
+  localStorage.setItem("authData", token);
+  return token;
+};
