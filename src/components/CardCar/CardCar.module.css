@@ -15,8 +15,9 @@
 }
 
 .card-image img {
-  width: 8rem;
-  height: 5rem;
+  width: 7.7rem;
+  height: 5.1rem;
+  border-radius: 6px;
 }
 
 .card-description-container h4 {

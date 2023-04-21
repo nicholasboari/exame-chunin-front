@@ -1,7 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
 export function Navbar() {
+  const navigate = useNavigate();
+
   return (
     <nav>
       <div className={styles.container}>
@@ -15,7 +17,7 @@ export function Navbar() {
             </NavLink>
           </h1>
           <div className={styles["login-country-container"]}>
-            <button>Login</button>
+            <button onClick={() => navigate("/auth")}>Login</button>
             <img
               src="https://logodownload.org/wp-content/uploads/2022/05/brazil-flag-bandeira.png"
               alt="logo-brazil"

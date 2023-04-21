@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
-import { authToken, requestLogin } from "../../../util/requests";
+import { requestLogin } from "../../../util/requests";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { authToken, getToken } from "../../../util/storage";
 
 import styles from "./Login.module.css";
 
@@ -14,12 +16,14 @@ export function Login() {
 
   const { register, handleSubmit } = useForm<FormData>();
 
+  const navigate = useNavigate();
+
   const onsubmit = (formData: FormData) => {
     requestLogin(formData)
       .then((response) => {
-        console.log(authToken(response.data));
+        authToken(response.data);
         setHasError(false);
-        console.log("sucesso", response);
+        navigate("/admin");
       })
       .catch((error) => {
         setHasError(true);

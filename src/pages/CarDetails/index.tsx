@@ -4,7 +4,7 @@ import { Vehicle } from "../../types/Vehicle";
 import { BASE_URL } from "../../util/requests";
 import { useEffect, useState } from "react";
 import { priceFormatter } from "../../util/priceFormatter";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import brandIcon from "../../assets/img/brand-icon.png";
 import setaIcon from "../../assets/img/seta.png";
@@ -20,6 +20,8 @@ export function CarDetails() {
 
   const [vehicle, setVehicle] = useState<Vehicle>();
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios.get(`${BASE_URL}/vehicles/${vehicleId}`).then((response) => {
       setVehicle(response.data);
@@ -31,7 +33,7 @@ export function CarDetails() {
       <div className={styles["car-details-content"]}>
         <div className={styles["car-details-back"]}>
           <img src={setaIcon} />
-          <h2>VOLTAR</h2>
+          <h2 onClick={() => navigate(-1)}>VOLTAR</h2>
         </div>
         <div className={styles["car-details-card"]}>
           <div>

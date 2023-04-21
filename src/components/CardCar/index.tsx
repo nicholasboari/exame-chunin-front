@@ -1,16 +1,18 @@
 import { BsCalendar, BsCarFrontFill, BsFillFuelPumpFill } from "react-icons/bs";
 import { Vehicle } from "../../types/Vehicle";
+import { priceFormatter } from "../../util/priceFormatter";
+
 import brandIcon from "../../assets/img/brand-icon.png";
 import styles from "./CardCar.module.css";
-import { priceFormatter } from "../../util/priceFormatter";
 
 type Props = {
   vehicle: Vehicle;
+  onOpen?: () => void;
 };
 
-export function CardCar({ vehicle }: Props) {
+export function CardCar({ vehicle, onOpen }: Props) {
   return (
-    <div className={styles["card-content"]}>
+    <div onClick={onOpen} className={styles["card-content"]}>
       <div className={styles["card-image"]}>
         <img src={vehicle.imageUrl} alt="" />
       </div>

@@ -1,4 +1,5 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
+import { getToken } from "./storage";
 
 export const BASE_URL = "http://localhost:8080";
 
@@ -25,7 +26,12 @@ export const requestLogin = (loginData: LoginData) => {
   });
 };
 
-export const authToken = (token: string) => {
-  localStorage.setItem("authData", token);
-  return token;
+export const requestBackend = (config: AxiosRequestConfig) => {
+  const headers = config.withCredentials
+    ? {
+        ...config.headers,
+        Authorization: "Bearer " + getToken(),
+      }
+    : config.headers;
+  return axios({ ...config, baseURL: BASE_URL, headers });
 };
