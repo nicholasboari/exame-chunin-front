@@ -72,3 +72,41 @@
   padding: 0.3rem;
   color: white;
 }
+
+.card-details-edit {
+  text-align: center;
+  margin-top: 1rem;
+  border-top: 1px solid rgb(177, 177, 177);
+  background-color: rgb(100, 100, 100);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.card-details-edit strong {
+  font-size: 0.9rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-weight: 700;
+  padding: 0.3rem;
+  color: white;
+}
+
+.card-details-remove {
+  text-align: center;
+  margin-top: 1rem;
+  border-top: 1px solid rgb(177, 177, 177);
+  background-color: rgb(255, 0, 0);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.card-details-remove strong {
+  font-size: 0.9rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-weight: 700;
+  padding: 0.3rem;
+  color: white;
+}

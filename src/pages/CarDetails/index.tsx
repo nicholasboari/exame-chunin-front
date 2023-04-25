@@ -33,7 +33,7 @@ export function CarDetails() {
       <div className={styles["car-details-content"]}>
         <div className={styles["car-details-back"]}>
           <img src={setaIcon} />
-          <h2 onClick={() => navigate(-1)}>VOLTAR</h2>
+          <h2 onClick={() => navigate("/")}>VOLTAR</h2>
         </div>
         <div className={styles["car-details-card"]}>
           <div>

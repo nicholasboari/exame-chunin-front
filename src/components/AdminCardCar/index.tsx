@@ -3,14 +3,14 @@ import { Vehicle } from "../../types/Vehicle";
 import { priceFormatter } from "../../util/priceFormatter";
 
 import brandIcon from "../../assets/img/brand-icon.png";
-import styles from "./CardCar.module.css";
+import styles from "./AdminCardCar.module.css";
 
 type Props = {
   vehicle: Vehicle;
   onOpen?: () => void;
 };
 
-export function CardCar({ vehicle, onOpen }: Props) {
+export function AdminCardCar({ vehicle, onOpen }: Props) {
   return (
     <div className={styles["card-content"]}>
       <div className={styles["card-image"]}>
@@ -40,6 +40,14 @@ export function CardCar({ vehicle, onOpen }: Props) {
           <div onClick={onOpen} className={styles["card-details-price"]}>
             <strong>{priceFormatter(vehicle?.price)}</strong>
           </div>
+          <div onClick={onOpen} className={styles["card-details-edit"]}>
+            <strong>EDITAR</strong>
+          </div>
+          <div onClick={onOpen} className={styles["card-details-remove"]}>
+            <strong>REMOVER</strong>
+          </div>
+          <br />
+          <span>ID do veiculo: {vehicle.id}</span>
         </div>
       </div>
     </div>

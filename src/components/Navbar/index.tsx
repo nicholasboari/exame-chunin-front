@@ -32,14 +32,13 @@ export function Navbar() {
 
   const handleLogoutClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    removeToken();
     setAuthData({
       authenticated: false,
     });
     navigate("/");
+    window.location.reload();
+    removeToken();
   };
-
-  console.log(authData.tokenUsername);
 
   return (
     <nav>

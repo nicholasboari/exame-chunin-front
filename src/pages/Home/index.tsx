@@ -1,4 +1,3 @@
-import { NavLink, useNavigate } from "react-router-dom";
 import { CardCar } from "../../components/CardCar";
 import { Footer } from "../../components/Footer";
 import { Navbar } from "../../components/Navbar";
@@ -6,6 +5,8 @@ import { useEffect, useState } from "react";
 import { Vehicle } from "../../types/Vehicle";
 import { Page } from "../../types/Page";
 import { BASE_URL } from "../../util/requests";
+import { isAdmin, isAuthenticated } from "../../util/auth";
+import { AdminCardCar } from "../../components/AdminCardCar";
 
 import styles from "./Home.module.css";
 import axios from "axios";
@@ -13,7 +14,29 @@ import axios from "axios";
 export function Home() {
   const [page, setPage] = useState<Page<Vehicle>>();
 
-  const navigate = useNavigate();
+  const pageVehiclesAdmin = () => {
+    return page?.content.map((vehicle) => {
+      return (
+        <AdminCardCar
+          onOpen={() => window.open(`/vehicles/${vehicle?.id}`, "_blank")}
+          vehicle={vehicle}
+          key={vehicle.id}
+        />
+      );
+    });
+  };
+
+  const pageVehiclesUser = () => {
+    return page?.content.map((vehicle) => {
+      return (
+        <CardCar
+          onOpen={() => window.open(`/vehicles/${vehicle?.id}`, "_blank")}
+          vehicle={vehicle}
+          key={vehicle.id}
+        />
+      );
+    });
+  };
 
   useEffect(() => {
     axios.get(`${BASE_URL}/vehicles`).then((response) => {
@@ -45,15 +68,9 @@ export function Home() {
         <h2>{page?.totalElements} veículos encontrados</h2>
         <div className={styles["car-list-container"]}>
           <div className={styles["car-list-items"]}>
-            {page?.content.map((vehicle) => {
-              return (
-                <CardCar
-                  onOpen={() => navigate(`/vehicles/${vehicle?.id}`)}
-                  vehicle={vehicle}
-                  key={vehicle.id}
-                />
-              );
-            })}
+            {isAdmin() && isAuthenticated()
+              ? pageVehiclesAdmin()
+              : pageVehiclesUser()}
           </div>
         </div>
       </div>

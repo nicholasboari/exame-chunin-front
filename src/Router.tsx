@@ -1,9 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { CarDetails } from "./pages/CarDetails";
-import { Admin } from "./pages/Admin";
 import { Auth } from "./pages/Auth";
 import { PrivateRoute } from "./components/PrivateRoute";
+import { Form } from "./pages/Admin/Vehicles/Form";
+import { List } from "./pages/Admin/Vehicles/List";
 
 export function Router() {
   return (
@@ -11,10 +12,18 @@ export function Router() {
       <Route path="/" element={<Home />} />
       <Route path="/vehicles/:vehicleId" element={<CarDetails />} />
       <Route
-        path="/admin"
+        path="/admin/vehicles"
         element={
           <PrivateRoute path="/">
-            <Admin />
+            <List />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/vehicles/:vehiclesId"
+        element={
+          <PrivateRoute path="/">
+            <Form />
           </PrivateRoute>
         }
       />

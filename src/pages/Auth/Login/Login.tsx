@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { requestLogin } from "../../../util/requests";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { authToken, getToken } from "../../../util/storage";
+import { authToken } from "../../../util/storage";
 
 import styles from "./Login.module.css";
 
@@ -23,7 +23,7 @@ export function Login() {
       .then((response) => {
         authToken(response.data);
         setHasError(false);
-        navigate("/admin");
+        navigate("/");
       })
       .catch((error) => {
         setHasError(true);
