@@ -1,9 +1,9 @@
 export type Vehicle = {
-  id: number;
+  id?: number;
   name: string;
   year: number;
   price: number;
-  imageUrl: string;
+  imageUrl?: string;
   description: string;
   vehicleType: string;
   vehicleModel: string;

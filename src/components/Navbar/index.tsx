@@ -1,6 +1,11 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { TokenData, getAuthToken, isAuthenticated } from "../../util/auth";
+import {
+  TokenData,
+  getAuthToken,
+  isAdmin,
+  isAuthenticated,
+} from "../../util/auth";
 import { getToken, removeToken } from "../../util/storage";
 
 import styles from "./Navbar.module.css";
@@ -40,6 +45,12 @@ export function Navbar() {
     removeToken();
   };
 
+  const isHome = () => {
+    const expectedUrl = "/";
+
+    return window.location.pathname == expectedUrl ? true : false;
+  };
+
   return (
     <nav>
       <div className={styles.container}>
@@ -52,6 +63,14 @@ export function Navbar() {
               </p>
             </NavLink>
           </h1>
+          {isHome() && isAdmin() && isAuthenticated() && (
+            <button
+              className={styles["btn-vehicle"]}
+              onClick={() => navigate("/admin/vehicles")}
+            >
+              Adicionar veículo
+            </button>
+          )}
           <div className={styles["login-country-container"]}>
             {authData.authenticated ? (
               <>

@@ -6,7 +6,7 @@ import { authToken } from "../../../util/storage";
 
 import styles from "./Login.module.css";
 
-type FormData = {
+type Credentials = {
   login: string;
   password: string;
 };
@@ -14,11 +14,11 @@ type FormData = {
 export function Login() {
   const [hasError, setHasError] = useState(false);
 
-  const { register, handleSubmit } = useForm<FormData>();
+  const { register, handleSubmit } = useForm<Credentials>();
 
   const navigate = useNavigate();
 
-  const onsubmit = (formData: FormData) => {
+  const onsubmit = (formData: Credentials) => {
     requestLogin(formData)
       .then((response) => {
         authToken(response.data);

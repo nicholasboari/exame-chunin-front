@@ -4,7 +4,6 @@ import { CarDetails } from "./pages/CarDetails";
 import { Auth } from "./pages/Auth";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { Form } from "./pages/Admin/Vehicles/Form";
-import { List } from "./pages/Admin/Vehicles/List";
 
 export function Router() {
   return (
@@ -15,18 +14,11 @@ export function Router() {
         path="/admin/vehicles"
         element={
           <PrivateRoute path="/">
-            <List />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/admin/vehicles/:vehiclesId"
-        element={
-          <PrivateRoute path="/">
             <Form />
           </PrivateRoute>
         }
       />
+
       <Route path="/auth" element={<Auth />} />
     </Routes>
   );
