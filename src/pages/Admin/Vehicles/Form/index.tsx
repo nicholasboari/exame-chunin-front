@@ -1,22 +1,36 @@
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { Navbar } from "../../../../components/Navbar";
-
-import styles from "./Form.module.css";
-import { requestBackend, requestLogin } from "../../../../util/requests";
+import { requestBackend } from "../../../../util/requests";
 import { AxiosRequestConfig } from "axios";
 import { Vehicle } from "../../../../types/Vehicle";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import styles from "./Form.module.css";
+import CurrencyInput from "react-currency-input-field";
+
+type UrlParams = {
+  vehicleId: string;
+};
 
 export function Form() {
-  const { register, handleSubmit } = useForm<Vehicle>();
+  const { vehicleId } = useParams<UrlParams>();
+
+  const { register, handleSubmit, setValue, control } = useForm<Vehicle>();
+
+  const isEditing = vehicleId != undefined;
 
   const navigate = useNavigate();
 
   const onsubmit = (formData: Vehicle) => {
+    const data = {
+      ...formData,
+      price: String(formData.price).replace(",", "."),
+    };
+
     const config: AxiosRequestConfig = {
-      method: "post",
-      url: "/vehicles",
-      data: formData,
+      method: isEditing ? "put" : "post",
+      url: isEditing ? `/vehicles/${vehicleId}` : "/vehicles",
+      data,
       withCredentials: true,
     };
     requestBackend(config).then((response) => {
@@ -24,6 +38,25 @@ export function Form() {
       navigate("/");
     });
   };
+
+  useEffect(() => {
+    if (isEditing) {
+      requestBackend({ url: `/vehicles/${vehicleId}` }).then((response) => {
+        const vehicle = response.data as Vehicle;
+
+        setValue("id", vehicle.id);
+        setValue("description", vehicle.description);
+        setValue("name", vehicle.name);
+        setValue("year", vehicle.year);
+        setValue("price", vehicle.price);
+        setValue("imageUrl", vehicle.imageUrl);
+        setValue("vehicleBrand", vehicle.vehicleBrand);
+        setValue("vehicleFuel", vehicle.vehicleFuel);
+        setValue("vehicleModel", vehicle.vehicleModel);
+        setValue("vehicleType", vehicle.vehicleType);
+      });
+    }
+  }, []);
   return (
     <>
       <Navbar />
@@ -44,11 +77,18 @@ export function Form() {
                 className={styles["base-input"]}
                 placeholder="Ano do veículo"
               />
-              <input
-                {...register("price")}
-                type="number"
-                className={styles["base-input"]}
-                placeholder="Preço do veículo"
+              <Controller
+                name="price"
+                control={control}
+                render={({ field }) => (
+                  <CurrencyInput
+                    placeholder="Preço"
+                    className={styles["base-input"]}
+                    value={field.value}
+                    disableGroupSeparators={true}
+                    onValueChange={field.onChange}
+                  />
+                )}
               />
               <input
                 {...register("imageUrl")}

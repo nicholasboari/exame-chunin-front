@@ -18,6 +18,14 @@ export function Router() {
           </PrivateRoute>
         }
       />
+      <Route
+        path="/admin/vehicles/:vehicleId"
+        element={
+          <PrivateRoute path="/">
+            <Form />
+          </PrivateRoute>
+        }
+      />
 
       <Route path="/auth" element={<Auth />} />
     </Routes>

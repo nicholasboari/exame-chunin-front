@@ -18,7 +18,7 @@ export function Home() {
     return page?.content.map((vehicle) => {
       return (
         <AdminCardCar
-          onOpen={() => window.open(`/admin/vehicles/${vehicle?.id}`, "_blank")}
+          onOpen={() => window.open(`/vehicles/${vehicle?.id}`, "_blank")}
           vehicle={vehicle}
           key={vehicle.id}
         />
