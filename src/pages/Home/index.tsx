@@ -4,15 +4,22 @@ import { Navbar } from "../../components/Navbar";
 import { useEffect, useState } from "react";
 import { Vehicle } from "../../types/Vehicle";
 import { Page } from "../../types/Page";
-import { BASE_URL } from "../../util/requests";
+import { BASE_URL, requestBackend } from "../../util/requests";
 import { isAdmin, isAuthenticated } from "../../util/auth";
 import { AdminCardCar } from "../../components/AdminCardCar";
+import { useForm } from "react-hook-form";
 
 import styles from "./Home.module.css";
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
+
+type SearchData = {
+  name: string;
+};
 
 export function Home() {
   const [page, setPage] = useState<Page<Vehicle>>();
+
+  const { register, handleSubmit, setValue } = useForm<SearchData>();
 
   const pageVehiclesAdmin = () => {
     return page?.content.map((vehicle) => {
@@ -38,10 +45,19 @@ export function Home() {
     });
   };
 
+  const onsubmit = (formData: SearchData) => {
+    const config: AxiosRequestConfig = {
+      url: `/vehicles/name?name=${formData.name}`,
+    };
+    requestBackend(config).then((response) => {
+      console.log(formData);
+      setPage(response.data);
+    });
+  };
+
   useEffect(() => {
     axios.get(`${BASE_URL}/vehicles`).then((response) => {
       setPage(response.data);
-      console.log(response.data);
     });
   }, []);
 
@@ -50,8 +66,17 @@ export function Home() {
       <Navbar />
       <div className={styles.container}>
         <div className={styles.search}>
-          <form className={styles.form}>
-            <input placeholder="Nome do veículo" type="text" required />
+          <form
+            {...register("name")}
+            className={styles.form}
+            onSubmit={handleSubmit(onsubmit)}
+          >
+            <input
+              placeholder="Nome do veículo"
+              type="text"
+              name="name"
+              required
+            />
             <button type="submit">
               {" "}
               <svg
