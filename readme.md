@@ -7,6 +7,7 @@ Este é um projeto de gerenciamento de carros construído com React. Ele permite
 - React Router Dom
 - React Hook Form
 - Axios
+- JWT decode
 
 ## Instruções de instalação
 Clone o repositório para o seu computador:
